@@ -188,7 +188,7 @@ var LOGIN_JS = [
 "    '<div class=\"card login-card stack\">' +",
 "    '<div class=\"logo-big\">&#128172;</div>' +",
 "    '<h2 style=\"margin:0;\">Ready for a chit-chat?</h2>' +",
-"    '<p class=\"small\">Enter your name to start practising with TREES &mdash; worth 25 marks for content, plus 5 marks for Language Use (30 total).</p>' +",
+"    '<p class=\"small\">Enter your name to start practising with TREES &mdash; You will be scored over 25 marks for content and Language Use.</p>' +",
 "    '<div><label>Your Name</label><input type=\"text\" id=\"loginName\" placeholder=\"e.g. Ashraf or Ashraf&#64;5IG\" maxlength=\"60\"/><div class=\"hint\">Add your class with an &#64; sign (e.g. Jovan&#64;5IG) so your teacher can track your progress by class. This is optional.</div></div>' +",
 "    '<button class=\"btn-primary\" data-action=\"login\">Start Quest</button>' +",
 "    '</div></div>';",
