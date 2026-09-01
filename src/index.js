@@ -375,7 +375,7 @@ async function removeFromIndex(env, key, id) {
 }
 
 async function ensureSeeded(env) {
-  const idx = await env.CCv66_DATA.get("topics_index");
+  const idx = await env.CCv6_DATA.get("topics_index");
   if (idx) return;
   const ids = [];
   for (const t of SEED_TOPICS) {
