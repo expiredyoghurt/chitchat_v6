@@ -1,0 +1,39 @@
+name = "just-a-chit-chat"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# --- KV namespace ---
+# Create with:  wrangler kv:namespace create CCv6_DATA
+# Then paste the returned id below.
+kv_namespaces = [
+  { binding = "CCv6_DATA", id = "e1815085e13c4be092a5162986f77e16" }
+]
+
+# --- Teacher password ---
+# Lives in KV (not hardcoded in this file or the source).
+# Set/replace it once with:
+#   wrangler kv:key put --binding=CCv6_DATA "config:teacher_password" "yourSecretPassword"
+# It can also be changed later from inside the Teacher Tools > Settings tab.
+
+# --- AI marking: Gemini -> Groq -> Workers AI -> offline scorer ---
+# 1st marker: Google Gemini (vision-capable - it's the only one of the three
+# that can actually see the topic picture). Set the real key as a Worker
+# SECRET - never paste it into this file or any source file:
+#   wrangler secret put GEMINI_API_KEY
+# (paste the key from aistudio.google.com/apikey when prompted)
+#
+# 2nd marker: Groq (fast, generous free tier, text-only). Also a Worker SECRET:
+#   wrangler secret put GROQ_API_KEY
+# (paste the key from console.groq.com when prompted)
+#
+# 3rd marker: Cloudflare Workers AI. Free, built in, no signup, text-only -
+# this binding is all it needs.
+#
+# If GEMINI_API_KEY is missing or a Gemini call fails, marking falls back to
+# Groq; if that's also missing/fails, it falls back to Workers AI; if that's
+# also unavailable, it falls back further to an offline rule-based scorer so
+# the app never hard-fails. Groq and Workers AI can't see the picture, so
+# they instead use each topic's optional "Picture Description" field
+# (Teacher Tools -> Topics) to judge the Evidence part - see the README.
+[ai]
+binding = "AI"
